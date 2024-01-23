@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('tbl_transaksi', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullabel();
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->enum('role',['admin', 'kasir'])->nullabel();
-                
+            $table->string('no_transaksi');
+            $table->date('tgl_transaksi')->nullabel();
+            $table->integer('diskon')->nullabel();
+            $table->bigInteger('total_bayar')->nullabel();                
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('tbl_transaksi');
     }
 };
