@@ -1,4 +1,4 @@
-@extend('layout.layout')
+@extends('layout.layout')
 @section('content')   
         <!--**********************************
             Content body start

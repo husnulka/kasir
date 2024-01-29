@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Model\User;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -11,7 +11,7 @@ class UserController extends Controller
     public function index(){
         $data = array(
             'title' => 'Data User',
-            //'data_user' =>User::all(),
+            'data_user' =>User::all(),
         );
 
         return view('admin.master.user.list', $data);
@@ -20,17 +20,32 @@ class UserController extends Controller
     public function store(Request $request){
         /*$this->validate($request,[
             'email' => 'email',
-            'password' => 'required|confirmed|min:3',
+            'password' => 'required|confirmed|min:3',            
         ]);*/
 
-        user::create([
-            'name' => $request-> name,
-            'email' => $request-> email,
-            'password' => Hash::make($request-> password),
-            'role' => $request-> role,
-        ]);
+        /*
+        //nanti dibuka untuk validasi email tidak boleh ada yg sama
+        $this->validate($request,[
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|between:6,255|confirmed',
+        ]);*/
 
-        return redirect('/user')->with('success', 'Data Berhasil Disimpan');
+        $dataTambah = [
+            'name' => $request->name, 
+            'email' => $request->email, 
+            'password' => Hash::make($request-> password), 
+            'role' => $request->role,
+        ];
+
+        if(user::create($dataTambah)){
+            return redirect('/user')->with('success', 'Data Berhasil Disimpan');
+        }else{            
+            //return redirect('/user')->with('error', 'Data Gagal Disimpan');
+            
+            return redirect('/user')->withErrors('Data Gagal Disimpan.')->withInput();
+        }
+
+        
     }
 
     public function update(Request $request, $id){

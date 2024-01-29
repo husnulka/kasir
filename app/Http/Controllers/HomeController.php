@@ -10,11 +10,11 @@ class HomeController extends Controller
 {
     public function index(){
         $data = array(
-            'title' => 'Homepage'
+            'title' => 'HSI-SBX3'
         );
 
-        //return view('home', $data);
-        return view('index', $data);
+        return view('home', $data);
+        //return view('index', $data);
     }
 
     /*

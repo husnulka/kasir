@@ -17,7 +17,7 @@ class AdminController extends Controller
         //resources/views/admin/master/user/list.blade.php
         //return view('admin.master.user.list', $data);
 
-        echo "Halo selamat datang";
+        echo "Halo selamat datang dihalaman index adminController";
         echo "<h1>".Auth::user()->name."</h1>";
         echo "<a href='/logout'>logout >> </a>";
     }

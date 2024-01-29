@@ -1,4 +1,4 @@
-@extend('layout.layout')
+@extends('layout.layout')
 @section('content')        
 <!--**********************************
     Content body start
@@ -26,10 +26,46 @@
                             <button type="button" class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#modalCreate">
                                 <i class="fa fa-plus"></i>Tambah Data
                             </button>
-                        </div>
-                    
-                        
+                        </div> 
                     </div>
+
+                    @if ($errors->any())
+                        <div class="col-sm-12">
+                            <div class="alert alert-danger" alert-dismissible fade show" role="alert">                            
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    @endif
+
+                    @if (session()->has('success'))
+                        <div class="col-sm-12">
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session()->get('success') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                        </div>
+                    @endif
+
+                    @if (session()->has('error'))
+                        <div class="col-sm-12">
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{ session()->get('error') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                        </div>
+                    @endif
+
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered zero-configuration">
@@ -126,7 +162,7 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Nama Lengkap</label>
-                            <input type="text" value="{{ $d->nama_lengkap }}" class="form-control" name="name" placeholder="Nama Lengkap" required>
+                            <input type="text" value="{{ $d->name }}" class="form-control" name="name" placeholder="Nama Lengkap" required>
                         </div>
                         <div class="form-group">
                             <label>Email</label>

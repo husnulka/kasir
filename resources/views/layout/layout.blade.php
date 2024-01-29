@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title><{{ $title }}></title>
+    <title>{{ $title }}</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon.png">
     <!-- Custom Stylesheet -->
@@ -30,7 +30,6 @@
     <!--*******************
         Preloader end
     ********************-->
-
     
     <!--**********************************
         Main wrapper start
@@ -83,7 +82,7 @@
                                             <a href="app-profile.html"><i class="icon-user"></i> <span>Profile</span></a>
                                         </li>                                        
                                         <hr class="my-2">                                      
-                                        <li><a href="page-login.html"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                        <li><a href="/logout"><i class="icon-key"></i> <span>Logout</span></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -128,13 +127,13 @@
                         </ul>
                     </li>
 
-                    <!-- @if(Auth::user()->role == 'kasir') -->
+                    @if(Auth::user()->role == 'kasir')
                     <li>
                         <a href="/transaksi" aria-expanded="false">
                             <i class="icon-speedometer menu-icon"></i><span class="nav-text">Data Transaksi</span>
                         </a>
                     </li>
-                    <!-- @endif -->
+                    @endif 
                     
                     <li>
                         <a href="/laporan" aria-expanded="false">
@@ -148,7 +147,7 @@
             Sidebar end
         ***********************************-->
 
-        @yield(content)
+        @yield('content')
         
         
         <!--**********************************

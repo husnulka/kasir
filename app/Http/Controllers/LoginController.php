@@ -31,14 +31,16 @@ class LoginController extends Controller
         ];
 
         if(Auth::attempt($infologin)){
-            //return redirect('admin');//cek di web.php nge route ke admin
+            return redirect('home');//cek di web.php nge route ke admin
+            /*
+            //mendaftarkan role user ke halaman mana di direct nya, daftarkan juga di web.php
             if(Auth::user()->role == 'operator'){                
                 return redirect('admin/operator');
-            }elseif(Auth::user()->role == 'keuangan'){              
+            }elseif(Auth::user()->role == 'kasir'){              
                 return redirect('admin/keuangan');
             }elseif(Auth::user()->role == 'marketing'){              
                 return redirect('admin/marketing');
-            }
+            }*/
         }else{
             return redirect('')->withErrors('Username & password yang dimasukkan tidak sesuai.')->withInput();
         }
