@@ -37,13 +37,22 @@
                         <div class="card login-form mb-0">
                             <div class="card-body pt-5">
                                 <a class="text-center" href=""> <h4>Silakan Login</h4></a>
-                                @csrf
+                                @if($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach($errors->all() as $item)
+                                                <li>{{ $item }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                 <form class="mt-5 mb-5 login-input" method="POST" action="">
+                                    @csrf
                                     <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="Email" name="email" required>
+                                        <input type="email" value="{{ old('email') }}" class="form-control" placeholder="Email" name="email" id="email" required autofocus>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Password" name="password" required>
+                                        <input type="password" class="form-control" placeholder="Password" name="password" id="password" required>
                                     </div>
                                     <button type="submit" class="btn login-form__btn submit w-100">Sign In</button>
                                 </form>
@@ -54,10 +63,7 @@
             </div>
         </div>
     </div>
-    
-
-    
-
+   
     <!--**********************************
         Scripts
     ***********************************-->
