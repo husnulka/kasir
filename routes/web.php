@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\JenisBarangController;
  
 /*
 |--------------------------------------------------------------------------
@@ -22,15 +23,15 @@ use App\Http\Controllers\UserController;
     return view('welcome');//C:\xampp\htdocs\kasir\resources\views\welcome.blade.php
 });*/
 
-//SesiController=LoginController
 //hanya guest/yg belum login yg bisa masuk ke halaman login
 Route::middleware(['guest'])->group(function(){
     Route::get('/', [LoginController::class, 'index'])->name('login');//ini halaman login
     Route::post('/', [LoginController::class, 'login']);
 });
 
-//kalo ada yg akses home akan diarahkan ke /user
-//Route::get('/home', function(){  return redirect('/admin'); });
+//cek : app/Http/Middleware/UserAkses.php > "Anda tidak diperbolehkan akses halaman ini" > diarahkan ke /admin pada UserAkses.php
+//kalo ada yg akses /admin akan diarahkan ke /home
+Route::get('/admin', function(){  return redirect('/home'); });
 
 //tampilan awal setelah login
 //userAkses adalah nama yg didaftarkan di app\http\kernel.php, cek juga LoginController.php
@@ -56,4 +57,10 @@ Route::group(['middleware' => ['auth', 'userAkses:admin']], function(){
     Route::post('/user/store', [UserController::class, 'store']);
     Route::post('/user/update/{id}', [UserController::class, 'update']);
     Route::get('/user/destroy/{id}', [UserController::class, 'destroy']);
+
+    //CRUD Jenis Barang
+    Route::get('/jenisBarang', [JenisBarangController::class, 'index']);
+    Route::post('/jenisBarang/store', [JenisBarangController::class, 'store']);
+    Route::post('/jenisBarang/update/{id}', [JenisBarangController::class, 'update']);
+    Route::get('/jenisBarang/destroy/{id}', [JenisBarangController::class, 'destroy']);
 });
