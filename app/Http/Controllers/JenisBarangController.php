@@ -9,11 +9,11 @@ class JenisBarangController extends Controller
 {
     public function index(){
         $data = array(
-            'title' => 'Data Jenis Barang',
-            'data_jenis' =>JenisBarang::all(),
+            'title'         => 'Data Jenis Barang',
+            'data_jenis'    => JenisBarang::all(),
         );
 
-        return view('admin.master.jenisbarang.list', $data);
+        return view('admin.master.jenisBarang.list', $data);
     }
     
     public function store(Request $request){
@@ -23,9 +23,9 @@ class JenisBarangController extends Controller
         ];
 
         if(JenisBarang::create($dataTambah)){
-            return redirect('/jenisBarang')->with('success', 'Data Berhasil Disimpan');
+            return redirect('/jenisbarang')->with('success', 'Data Berhasil Disimpan');
         }else{                        
-            return redirect('/jenisBarang')->withErrors('Data Gagal Disimpan.')->withInput();
+            return redirect('/jenisbarang')->withErrors('Data Gagal Disimpan.')->withInput();
         }
 
         
@@ -38,11 +38,11 @@ class JenisBarangController extends Controller
             'nama_jenis' => $request->nama_jenis, 
         ]);
 
-        return redirect('/jenisBarang')->with('success', 'Data Berhasil Diubah');
+        return redirect('/jenisbarang')->with('success', 'Data Berhasil Diubah');
     }
 
     public function destroy($id){
         JenisBarang::where('id', $id)->delete();
-        return redirect('/jenisBarang')->with('success', 'Data Berhasil Dihapus');
+        return redirect('/jenisbarang')->with('success', 'Data Berhasil Dihapus');
     }
 }

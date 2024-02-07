@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\JenisBarangController;
+use App\Http\Controllers\BarangController;
  
 /*
 |--------------------------------------------------------------------------
@@ -59,8 +60,14 @@ Route::group(['middleware' => ['auth', 'userAkses:admin']], function(){
     Route::get('/user/destroy/{id}', [UserController::class, 'destroy']);
 
     //CRUD Jenis Barang
-    Route::get('/jenisBarang', [JenisBarangController::class, 'index']);
-    Route::post('/jenisBarang/store', [JenisBarangController::class, 'store']);
-    Route::post('/jenisBarang/update/{id}', [JenisBarangController::class, 'update']);
-    Route::get('/jenisBarang/destroy/{id}', [JenisBarangController::class, 'destroy']);
+    Route::get('/jenisbarang', [JenisBarangController::class, 'index']);
+    Route::post('/jenisbarang/store', [JenisBarangController::class, 'store']);
+    Route::post('/jenisbarang/update/{id}', [JenisBarangController::class, 'update']);
+    Route::get('/jenisbarang/destroy/{id}', [JenisBarangController::class, 'destroy']);
+
+    //CRUD Barang
+    Route::get('/barang', [BarangController::class, 'index']);
+    Route::post('/barang/store', [BarangController::class, 'store']);
+    Route::post('/barang/update/{id}', [BarangController::class, 'update']);
+    Route::get('/barang/destroy/{id}', [BarangController::class, 'destroy']);
 });
