@@ -34,8 +34,6 @@ class BarangController extends Controller
         }else{                        
             return redirect('/barang')->withErrors('Data Gagal Disimpan.')->withInput();
         }
-
-        
     }
 
     public function update(Request $request, $id){

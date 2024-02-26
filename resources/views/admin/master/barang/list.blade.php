@@ -184,13 +184,11 @@
                         </div>
                         <div class="input-group mb-3">
                             <input type="number" name="stok" value="{{ $d->stok }}" class="form-control" placeholder="Stok" required>
-                            <div class="input-group-append"><span class="input-group-text">pcs</span>
-                            </div>
+                            <div class="input-group-append"><span class="input-group-text">pcs</span></div>
                         </div>
                         <div class="input-group mb-3">
-                            <div class="input-group-prepend"><span class="input-group-text">Rp.</span>
-                            </div>
-                            <input type="texnumbert" name="harga" value="{{ $d->harga }}" class="form-control" placeholder="Harga" required>
+                            <div class="input-group-prepend"><span class="input-group-text">Rp.</span></div>
+                            <input type="number" name="harga" value="{{ $d->harga }}" class="form-control" placeholder="Harga" required>
                         </div>
                     </div>
                     <div class="modal-footer">

@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\JenisBarangController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\DiskonController;
  
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/admin/marketing', [AdminController::class, 'marketing'])->middleware('userAkses:marketing');
     */
 
+    
+
     Route::get('/logout', [LoginController::class, 'logout']);
 });
 
@@ -70,4 +73,16 @@ Route::group(['middleware' => ['auth', 'userAkses:admin']], function(){
     Route::post('/barang/store', [BarangController::class, 'store']);
     Route::post('/barang/update/{id}', [BarangController::class, 'update']);
     Route::get('/barang/destroy/{id}', [BarangController::class, 'destroy']);
+
+    //Setting Diskon
+    Route::get('/setdiskon', [DiskonController::class, 'index']);
+    Route::post('/setdiskon/update/{id}', [DiskonController::class, 'update']);
+
+    
+});
+
+Route::group(['middleware' => ['auth', 'userAkses:admin,kasir']], function(){
+    //setting profile
+    Route::get('/profile', [UserController::class, 'profile']);
+    Route::post('/profile/updateprofile/{id}', [UserController::class, 'updateprofile']);
 });

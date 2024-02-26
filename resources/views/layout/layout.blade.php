@@ -79,7 +79,7 @@
                                 <div class="dropdown-content-body">
                                     <ul>
                                         <li>
-                                            <a href="app-profile.html"><i class="icon-user"></i> <span>Profile</span></a>
+                                            <a href="/profile"><i class="icon-user"></i> <span>Profile</span></a>
                                         </li>                                        
                                         <hr class="my-2">                                      
                                         <li><a href="/logout"><i class="icon-key"></i> <span>Logout</span></a></li>
@@ -103,7 +103,7 @@
                 <ul class="metismenu" id="menu">
                     <li class="nav-label">Dashboard</li>
                     <li>
-                        <a href="#" aria-expanded="false">
+                        <a href="/home" aria-expanded="false">
                             <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
                         </a>
                     </li>
@@ -122,7 +122,7 @@
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="/user">Data User</a></li>
-                            <li><a href="/jenisBarang">Data Jenis Barang</a></li>
+                            <li><a href="/jenisbarang">Data Jenis Barang</a></li>
                             <li><a href="/barang">Data Barang</a></li>
                         </ul>
                     </li>
