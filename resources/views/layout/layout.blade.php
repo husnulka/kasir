@@ -109,23 +109,25 @@
                     </li>
 
                     <li class="nav-label">UI Components</li>
-                    
-                    <li>
-                        <a href="/setdiskon" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Setting Diskon</span>
-                        </a>
-                    </li>
-                    
-                    <li class="mega-menu mega-menu-sm">
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Data Master</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="/user">Data User</a></li>
-                            <li><a href="/jenisbarang">Data Jenis Barang</a></li>
-                            <li><a href="/barang">Data Barang</a></li>
-                        </ul>
-                    </li>
+                    @if(Auth::user()->role == 'admin')
+                        <li>
+                            <a href="/setdiskon" aria-expanded="false">
+                                <i class="icon-speedometer menu-icon"></i><span class="nav-text">Setting Diskon</span>
+                            </a>
+                        </li>
+                        
+                        
+                        <li class="mega-menu mega-menu-sm">
+                            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                                <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Data Master</span>
+                            </a>
+                            <ul aria-expanded="false">
+                                <li><a href="/user">Data User</a></li>
+                                <li><a href="/jenisbarang">Data Jenis Barang</a></li>
+                                <li><a href="/barang">Data Barang</a></li>
+                            </ul>
+                        </li>
+                    @endif
 
                     @if(Auth::user()->role == 'kasir')
                     <li>
