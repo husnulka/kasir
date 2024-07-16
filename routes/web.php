@@ -95,4 +95,5 @@ Route::group(['middleware' => ['auth', 'userAkses:kasir']], function(){
     //data transaksi
     Route::get('/transaksi', [TransaksiController::class, 'index']);
     Route::get('/transaksi/create', [TransaksiController::class, 'create']);
+    Route::get('/transaksi/detailbarang', [TransaksiController::class, 'detailbarang']);
 });

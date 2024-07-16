@@ -142,7 +142,7 @@
                     <div class="input-group mb-3">
                         <div class="input-group-prepend"><span class="input-group-text">Rp.</span>
                         </div>
-                        <input type="texnumbert" name="harga" class="form-control" placeholder="Harga" required>
+                        <input type="number" name="harga" class="form-control" placeholder="Harga" required>
                     </div>
                 </div>
                 <div class="modal-footer">

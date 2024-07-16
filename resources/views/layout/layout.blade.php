@@ -108,7 +108,6 @@
                         </a>
                     </li>
 
-                    <li class="nav-label">UI Components</li>
                     @if(Auth::user()->role == 'admin')
                         <li>
                             <a href="/setdiskon" aria-expanded="false">
@@ -127,6 +126,11 @@
                                 <li><a href="/barang">Data Barang</a></li>
                             </ul>
                         </li>
+                        <li>
+                            <a href="/laporan" aria-expanded="false">
+                                <i class="icon-speedometer menu-icon"></i><span class="nav-text">Data Laporan</span>
+                            </a>
+                        </li>
                     @endif
 
                     @if(Auth::user()->role == 'kasir')
@@ -137,11 +141,7 @@
                     </li>
                     @endif 
                     
-                    <li>
-                        <a href="/laporan" aria-expanded="false">
-                            <i class="icon-speedometer menu-icon"></i><span class="nav-text">Data Laporan</span>
-                        </a>
-                    </li>
+                    
                 </ul>
             </div>
         </div>

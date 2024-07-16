@@ -153,11 +153,26 @@
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Nama Barang</label>
-                        <select class="form-control" name="id_barang" required>
+                        <label>Nama Barang</label><br />
+                        <select class="form-control" name="id_barang" required id="BarangId">
                             <option value="" hidden>-- Pilih Nama Barang --</option>
-                           
+                            @foreach($data_jenis as $b)                            
+                                <option value="{{ $b->id}}">{{ $b->nama_barang }}</option>
+                            @endforeach                           
                         </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Harga</label><br />
+                        <input type="text" name="harga" class="form-control" placeholder="Harga" disabled required>
+                    </div>
+                    <div class="form-group">
+                        <label>Stok</label>
+                        <input type="text" name="stok" class="form-control" placeholder="Stok" disabled required>
+                    </div>
+                    <div class="form-group">
+                        <label>Qty</label>
+                        <input type="number" name="stok" class="form-control" placeholder="Qty" required>
                     </div>
                     <div id="tampil_barang"></div>
                    
@@ -171,6 +186,38 @@
         </div>
     </div>
 </div>
+<script>
+
+$(document).ready(function(){
+    //bind change event once DOM is ready
+    $('#BarangId').change(function(){});
+    getResult($(this).val());
+
+});
+
+
+function getResult(selectedValue){
+//call  ajax method to get data from database
+$.ajax({
+            type: "POST",
+            url: "/transaksi/detailbarang",//this  should be replace by your server side method
+            data: "{'value': '"+ selectedValue +"'}", //this is parameter name , make sure parameter name is sure as of your sever side method
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            async: false,
+            success: function (Result) {
+            alert(Result.d);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert(errorThrown);
+            }
+        });
+}
+
+function showDetailBarang(){
+    alert("tes");
+}
+</script>
 
 <!--**********************************
     Content body end
